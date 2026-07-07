@@ -1,0 +1,149 @@
+[
+  {
+    "incident_id": "INC-2026-001",
+    "title": "Ransomware Attack on Core Banking Platform",
+    "entity": "Ardenne Private Bank S.A.",
+    "type": "ransomware_attack",
+    "classification": "MAJOR",
+    "criteria_triggered": 7,
+    "criteria_names": [
+      "clients_affected",
+      "reputational_impact",
+      "duration",
+      "geographic_spread",
+      "data_losses",
+      "critical_function",
+      "economic_impact"
+    ]
+  },
+  {
+    "incident_id": "INC-2026-002",
+    "title": "Major Cloud Provider Outage Affecting NAV Calculation Pipeline",
+    "entity": "Eurocastle Capital Management S.\u00e0 r.l.",
+    "type": "cloud_outage",
+    "classification": "MAJOR",
+    "criteria_triggered": 5,
+    "criteria_names": [
+      "clients_affected",
+      "duration",
+      "geographic_spread",
+      "critical_function",
+      "economic_impact"
+    ]
+  },
+  {
+    "incident_id": "INC-2026-003",
+    "title": "Unauthorised Access to Client Portfolio Data via Compromised API Key",
+    "entity": "P\u00e9trusse Wealth Advisors S.A.",
+    "type": "data_breach",
+    "classification": "MAJOR",
+    "criteria_triggered": 5,
+    "criteria_names": [
+      "clients_affected",
+      "reputational_impact",
+      "data_losses",
+      "critical_function",
+      "economic_impact"
+    ]
+  },
+  {
+    "incident_id": "INC-2026-004",
+    "title": "DDoS Attack on Client Reporting Portal",
+    "entity": "Grand-Ducal Fund Services S.\u00e0 r.l.",
+    "type": "ddos_attack",
+    "classification": "SIGNIFICANT",
+    "criteria_triggered": 1,
+    "criteria_names": [
+      "clients_affected"
+    ]
+  },
+  {
+    "incident_id": "INC-2026-005",
+    "title": "Third-Party Pricing Data Feed Interruption",
+    "entity": "Moselle Reinsurance S.A.",
+    "type": "third_party_failure",
+    "classification": "MAJOR",
+    "criteria_triggered": 2,
+    "criteria_names": [
+      "duration",
+      "critical_function"
+    ]
+  },
+  {
+    "incident_id": "INC-2026-006",
+    "title": "TLS Certificate Expiry on Internal Development Server",
+    "entity": "Ardenne Private Bank S.A.",
+    "type": "certificate_expiry",
+    "classification": "MINOR",
+    "criteria_triggered": 0,
+    "criteria_names": []
+  },
+  {
+    "incident_id": "INC-2026-007",
+    "title": "Single Employee Email Account Compromised via Phishing",
+    "entity": "P\u00e9trusse Wealth Advisors S.A.",
+    "type": "phishing_compromise",
+    "classification": "MINOR",
+    "criteria_triggered": 0,
+    "criteria_names": []
+  },
+  {
+    "incident_id": "INC-2026-008",
+    "title": "Database Corruption During Scheduled Maintenance Window",
+    "entity": "Eurocastle Capital Management S.\u00e0 r.l.",
+    "type": "database_corruption",
+    "classification": "MAJOR",
+    "criteria_triggered": 6,
+    "criteria_names": [
+      "clients_affected",
+      "duration",
+      "geographic_spread",
+      "data_losses",
+      "critical_function",
+      "economic_impact"
+    ]
+  },
+  {
+    "incident_id": "INC-2026-009",
+    "title": "Firewall Misconfiguration Exposes Internal API to Public Internet",
+    "entity": "Grand-Ducal Fund Services S.\u00e0 r.l.",
+    "type": "misconfiguration",
+    "classification": "MINOR",
+    "criteria_triggered": 0,
+    "criteria_names": []
+  },
+  {
+    "incident_id": "INC-2026-010",
+    "title": "Former Employee Retains Access to Client Relationship Management System",
+    "entity": "Ardenne Private Bank S.A.",
+    "type": "insider_threat",
+    "classification": "SIGNIFICANT",
+    "criteria_triggered": 1,
+    "criteria_names": [
+      "data_losses"
+    ]
+  },
+  {
+    "incident_id": "INC-2026-011",
+    "title": "Failed Security Patch Causes Reinsurance Pricing Engine Crash",
+    "entity": "Moselle Reinsurance S.A.",
+    "type": "patch_failure",
+    "classification": "MAJOR",
+    "criteria_triggered": 2,
+    "criteria_names": [
+      "duration",
+      "critical_function"
+    ]
+  },
+  {
+    "incident_id": "INC-2026-012",
+    "title": "WAN Link Failure Between Luxembourg and Geneva Offices",
+    "entity": "P\u00e9trusse Wealth Advisors S.A.",
+    "type": "network_failure",
+    "classification": "SIGNIFICANT",
+    "criteria_triggered": 1,
+    "criteria_names": [
+      "geographic_spread"
+    ]
+  }
+]

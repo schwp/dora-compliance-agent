@@ -1,0 +1,36 @@
+{
+  "contract_ref": "ICT-B00123-969500XY-2023",
+  "register_of_information_fields": {
+    "entity_name": "Ardenne Private Bank S.A.",
+    "entity_lei": "529900JKLMNO678PQR90",
+    "entity_type": "Credit Institution",
+    "entity_country": "LU",
+    "provider_name": "DataVault Hosting S.A.S.",
+    "provider_lei": "969500XYZAB234CDEFG5",
+    "provider_country": "FR",
+    "provider_is_ctpp": false,
+    "service_type": "Colocation and Disaster Recovery Hosting",
+    "esa_service_code": "ICT-SS-002",
+    "supports_critical_function": true,
+    "function_supported": "Business continuity and disaster recovery",
+    "contract_start_date": "2023-07-01",
+    "contract_end_date": "2026-06-30",
+    "annual_cost_eur": 180000,
+    "governing_law": "LU"
+  },
+  "compliance_gaps": [
+    {
+      "article": "Art. 30(2)(g)",
+      "field": "termination_rights",
+      "description": "No termination rights or minimum notice period specified.",
+      "severity": "high"
+    },
+    {
+      "article": "Art. 30(3)(c)",
+      "field": "contingency_plans",
+      "description": "No requirement for provider to implement and test business contingency plans (required for critical functions).",
+      "severity": "high"
+    }
+  ],
+  "compliance_score": 87.5
+}

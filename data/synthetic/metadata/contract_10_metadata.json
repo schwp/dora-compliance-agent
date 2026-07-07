@@ -1,0 +1,30 @@
+{
+  "contract_ref": "ICT-O00567-724500DE-2024",
+  "register_of_information_fields": {
+    "entity_name": "Grand-Ducal Fund Services S.\u00e0 r.l.",
+    "entity_lei": "529900KLMN9012OPQRS3",
+    "entity_type": "UCITS Management Company",
+    "entity_country": "LU",
+    "provider_name": "FinSecure Solutions B.V.",
+    "provider_lei": "724500DEFGH678IJKLM9",
+    "provider_country": "NL",
+    "provider_is_ctpp": false,
+    "service_type": "Managed Detection and Response (MDR)",
+    "esa_service_code": "ICT-SS-008",
+    "supports_critical_function": true,
+    "function_supported": "ICT security and cyber resilience",
+    "contract_start_date": "2024-05-01",
+    "contract_end_date": "2027-04-30",
+    "annual_cost_eur": 200000,
+    "governing_law": "LU"
+  },
+  "compliance_gaps": [
+    {
+      "article": "Art. 30(3)(a)",
+      "field": "service_level_descriptions",
+      "description": "No quantitative performance targets or SLA metrics defined (required for critical functions).",
+      "severity": "high"
+    }
+  ],
+  "compliance_score": 93.8
+}

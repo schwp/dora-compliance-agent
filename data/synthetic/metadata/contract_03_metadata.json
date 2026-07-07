@@ -1,0 +1,36 @@
+{
+  "contract_ref": "ICT-R00089-724500DE-2024",
+  "register_of_information_fields": {
+    "entity_name": "Moselle Reinsurance S.A.",
+    "entity_lei": "529900STUVWX234YZA67",
+    "entity_type": "Reinsurance Undertaking",
+    "entity_country": "LU",
+    "provider_name": "FinSecure Solutions B.V.",
+    "provider_lei": "724500DEFGH678IJKLM9",
+    "provider_country": "NL",
+    "provider_is_ctpp": false,
+    "service_type": "Managed Detection and Response (MDR)",
+    "esa_service_code": "ICT-SS-008",
+    "supports_critical_function": true,
+    "function_supported": "ICT security and cyber resilience",
+    "contract_start_date": "2024-01-01",
+    "contract_end_date": "2026-12-31",
+    "annual_cost_eur": 120000,
+    "governing_law": "LU"
+  },
+  "compliance_gaps": [
+    {
+      "article": "Art. 30(2)(e)",
+      "field": "incident_assistance",
+      "description": "Contract does not require provider to assist with ICT incidents at no additional cost.",
+      "severity": "medium"
+    },
+    {
+      "article": "Art. 30(3)(d)",
+      "field": "tlpt_participation",
+      "description": "No obligation for provider to participate in threat-led penetration testing (required for critical functions).",
+      "severity": "medium"
+    }
+  ],
+  "compliance_score": 87.5
+}

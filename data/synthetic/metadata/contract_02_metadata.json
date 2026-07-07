@@ -1,0 +1,36 @@
+{
+  "contract_ref": "ICT-B00123-213800NO-2023",
+  "register_of_information_fields": {
+    "entity_name": "Ardenne Private Bank S.A.",
+    "entity_lei": "529900JKLMNO678PQR90",
+    "entity_type": "Credit Institution",
+    "entity_country": "LU",
+    "provider_name": "AlphaLedger Technologies Ltd.",
+    "provider_lei": "213800NOPQR901STUVW2",
+    "provider_country": "IE",
+    "provider_is_ctpp": false,
+    "service_type": "Core Banking Platform (SaaS)",
+    "esa_service_code": "ICT-SS-003",
+    "supports_critical_function": true,
+    "function_supported": "Payment processing and client account management",
+    "contract_start_date": "2023-09-15",
+    "contract_end_date": "2026-09-14",
+    "annual_cost_eur": 450000,
+    "governing_law": "LU"
+  },
+  "compliance_gaps": [
+    {
+      "article": "Art. 30(3)(e)",
+      "field": "audit_rights",
+      "description": "Contract does not grant unrestricted audit and inspection rights to entity and CSSF (required for critical functions).",
+      "severity": "high"
+    },
+    {
+      "article": "Art. 30(3)(f)",
+      "field": "exit_strategy",
+      "description": "No exit strategy with transition period or data migration support defined (required for critical functions).",
+      "severity": "high"
+    }
+  ],
+  "compliance_score": 87.5
+}

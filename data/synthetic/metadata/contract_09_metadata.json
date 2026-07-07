@@ -1,0 +1,60 @@
+{
+  "contract_ref": "ICT-S00234-213800NO-2023",
+  "register_of_information_fields": {
+    "entity_name": "P\u00e9trusse Wealth Advisors S.A.",
+    "entity_lei": "529900BCDE5678FGHIJ1",
+    "entity_type": "Investment Firm",
+    "entity_country": "LU",
+    "provider_name": "AlphaLedger Technologies Ltd.",
+    "provider_lei": null,
+    "provider_country": "IE",
+    "provider_is_ctpp": false,
+    "service_type": "Core Banking Platform (SaaS)",
+    "esa_service_code": "ICT-SS-003",
+    "supports_critical_function": true,
+    "function_supported": "Payment processing and client account management",
+    "contract_start_date": "2023-01-15",
+    "contract_end_date": "2025-01-14",
+    "annual_cost_eur": 350000,
+    "governing_law": "LU"
+  },
+  "compliance_gaps": [
+    {
+      "article": "Art. 28(3) / ITS",
+      "field": "lei_missing",
+      "description": "Provider's Legal Entity Identifier (LEI) is not documented in the contract.",
+      "severity": "medium"
+    },
+    {
+      "article": "Art. 30(2)(b)",
+      "field": "data_locations",
+      "description": "Contract does not specify the locations (regions/countries) where data is processed and stored.",
+      "severity": "high"
+    },
+    {
+      "article": "Art. 30(2)(c)",
+      "field": "data_protection_provisions",
+      "description": "Missing provisions on availability, authenticity, integrity and confidentiality of data.",
+      "severity": "high"
+    },
+    {
+      "article": "Art. 30(2)(d)",
+      "field": "data_recovery_insolvency",
+      "description": "No provisions on data access, recovery and return in the event of provider insolvency.",
+      "severity": "high"
+    },
+    {
+      "article": "Art. 30(2)(b)",
+      "field": "location_change_notification",
+      "description": "No provision requiring the provider to notify the entity in advance of data location changes.",
+      "severity": "high"
+    },
+    {
+      "article": "Art. 30(2)(a)",
+      "field": "subcontracting_conditions",
+      "description": "Subcontracting is permitted but conditions and limitations are not specified.",
+      "severity": "medium"
+    }
+  ],
+  "compliance_score": 62.5
+}

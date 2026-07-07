@@ -1,0 +1,23 @@
+{
+  "contract_ref": "ICT-A00456-391200TU-2024",
+  "register_of_information_fields": {
+    "entity_name": "Eurocastle Capital Management S.\u00e0 r.l.",
+    "entity_lei": "529900ABCDEF123GHI45",
+    "entity_type": "Alternative Investment Fund Manager",
+    "entity_country": "LU",
+    "provider_name": "NimbusCloud GmbH",
+    "provider_lei": "391200TUVWX345YZABC6",
+    "provider_country": "DE",
+    "provider_is_ctpp": false,
+    "service_type": "Cloud Infrastructure as a Service (IaaS)",
+    "esa_service_code": "ICT-SS-001",
+    "supports_critical_function": true,
+    "function_supported": "Trade execution and settlement processing",
+    "contract_start_date": "2024-06-01",
+    "contract_end_date": "2027-05-31",
+    "annual_cost_eur": 280000,
+    "governing_law": "LU"
+  },
+  "compliance_gaps": [],
+  "compliance_score": 100.0
+}

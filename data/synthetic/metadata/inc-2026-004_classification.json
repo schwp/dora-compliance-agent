@@ -1,0 +1,63 @@
+{
+  "incident_id": "INC-2026-004",
+  "incident_type": "ddos_attack",
+  "entity": "Grand-Ducal Fund Services S.\u00e0 r.l.",
+  "entity_type": "ManCo",
+  "classification": "SIGNIFICANT",
+  "criteria_triggered_count": 1,
+  "criteria_triggered": [
+    "clients_affected"
+  ],
+  "criteria_detail": {
+    "clients_affected": {
+      "value": 12,
+      "percentage": 26.7,
+      "threshold": ">10% of clients using impacted service",
+      "triggered": true
+    },
+    "reputational_impact": {
+      "value": false,
+      "threshold": "significant media coverage or regulatory attention",
+      "triggered": false
+    },
+    "duration": {
+      "value_hours": 1.75,
+      "threshold": ">2 hours service downtime",
+      "triggered": false
+    },
+    "geographic_spread": {
+      "countries": [
+        "LU"
+      ],
+      "count": 1,
+      "threshold": "\u22652 EU Member States",
+      "triggered": false
+    },
+    "data_losses": {
+      "type": null,
+      "records_affected": 0,
+      "threshold": "confirmed loss of confidentiality, integrity, or availability of data",
+      "triggered": false
+    },
+    "critical_function": {
+      "function": null,
+      "threshold": "disrupts a critical or important function",
+      "triggered": false
+    },
+    "economic_impact": {
+      "value_eur": 8500,
+      "threshold": ">EUR 100,000 direct + indirect costs",
+      "triggered": false
+    }
+  },
+  "reporting_requirements": {
+    "initial_notification": "Not mandatory (internal escalation recommended)",
+    "intermediate_report": "N/A",
+    "final_report": "Internal documentation required",
+    "cssf_form": "None (voluntary reporting possible)",
+    "client_notification": "At entity's discretion",
+    "gdpr_notification": "Not applicable"
+  },
+  "gdpr_breach": false,
+  "third_party_involved": "Cloudflare Inc."
+}

@@ -1,0 +1,64 @@
+{
+  "incident_id": "INC-2026-011",
+  "incident_type": "patch_failure",
+  "entity": "Moselle Reinsurance S.A.",
+  "entity_type": "Reinsurance Undertaking",
+  "classification": "MAJOR",
+  "criteria_triggered_count": 2,
+  "criteria_triggered": [
+    "duration",
+    "critical_function"
+  ],
+  "criteria_detail": {
+    "clients_affected": {
+      "value": 0,
+      "percentage": 0.0,
+      "threshold": ">10% of clients using impacted service",
+      "triggered": false
+    },
+    "reputational_impact": {
+      "value": false,
+      "threshold": "significant media coverage or regulatory attention",
+      "triggered": false
+    },
+    "duration": {
+      "value_hours": 2.25,
+      "threshold": ">2 hours service downtime",
+      "triggered": true
+    },
+    "geographic_spread": {
+      "countries": [
+        "LU"
+      ],
+      "count": 1,
+      "threshold": "\u22652 EU Member States",
+      "triggered": false
+    },
+    "data_losses": {
+      "type": null,
+      "records_affected": 0,
+      "threshold": "confirmed loss of confidentiality, integrity, or availability of data",
+      "triggered": false
+    },
+    "critical_function": {
+      "function": "Trade execution and settlement processing",
+      "threshold": "disrupts a critical or important function",
+      "triggered": true
+    },
+    "economic_impact": {
+      "value_eur": 5000,
+      "threshold": ">EUR 100,000 direct + indirect costs",
+      "triggered": false
+    }
+  },
+  "reporting_requirements": {
+    "initial_notification": "4 hours from classification (max 24h from detection)",
+    "intermediate_report": "72 hours from initial notification",
+    "final_report": "1 month from incident resolution",
+    "cssf_form": "DORA Major ICT-related incident notification (eDesk)",
+    "client_notification": "Not required",
+    "gdpr_notification": "Not applicable"
+  },
+  "gdpr_breach": false,
+  "third_party_involved": null
+}

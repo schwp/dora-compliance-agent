@@ -1,0 +1,30 @@
+{
+  "contract_ref": "ICT-A00456-529900FA-2024",
+  "register_of_information_fields": {
+    "entity_name": "Eurocastle Capital Management S.\u00e0 r.l.",
+    "entity_lei": "529900ABCDEF123GHI45",
+    "entity_type": "Alternative Investment Fund Manager",
+    "entity_country": "LU",
+    "provider_name": "Amazon Web Services EMEA SARL",
+    "provider_lei": "529900FAKEAWS1234567",
+    "provider_country": "LU",
+    "provider_is_ctpp": true,
+    "service_type": "Cloud Infrastructure as a Service (IaaS)",
+    "esa_service_code": "ICT-SS-001",
+    "supports_critical_function": true,
+    "function_supported": "Trade execution and settlement processing",
+    "contract_start_date": "2024-03-01",
+    "contract_end_date": "2027-02-28",
+    "annual_cost_eur": 520000,
+    "governing_law": "LU"
+  },
+  "compliance_gaps": [
+    {
+      "article": "Art. 30(2)(a)",
+      "field": "subcontracting_conditions",
+      "description": "Subcontracting is permitted but conditions and limitations are not specified.",
+      "severity": "medium"
+    }
+  ],
+  "compliance_score": 93.8
+}

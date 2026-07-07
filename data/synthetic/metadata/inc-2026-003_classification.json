@@ -1,0 +1,67 @@
+{
+  "incident_id": "INC-2026-003",
+  "incident_type": "data_breach",
+  "entity": "P\u00e9trusse Wealth Advisors S.A.",
+  "entity_type": "Investment Firm",
+  "classification": "MAJOR",
+  "criteria_triggered_count": 5,
+  "criteria_triggered": [
+    "clients_affected",
+    "reputational_impact",
+    "data_losses",
+    "critical_function",
+    "economic_impact"
+  ],
+  "criteria_detail": {
+    "clients_affected": {
+      "value": 1800,
+      "percentage": 81.8,
+      "threshold": ">10% of clients using impacted service",
+      "triggered": true
+    },
+    "reputational_impact": {
+      "value": true,
+      "threshold": "significant media coverage or regulatory attention",
+      "triggered": true
+    },
+    "duration": {
+      "value_hours": 0.5,
+      "threshold": ">2 hours service downtime",
+      "triggered": false
+    },
+    "geographic_spread": {
+      "countries": [
+        "LU"
+      ],
+      "count": 1,
+      "threshold": "\u22652 EU Member States",
+      "triggered": false
+    },
+    "data_losses": {
+      "type": "confidentiality",
+      "records_affected": 1800,
+      "threshold": "confirmed loss of confidentiality, integrity, or availability of data",
+      "triggered": true
+    },
+    "critical_function": {
+      "function": "Client portfolio valuation and NAV calculation",
+      "threshold": "disrupts a critical or important function",
+      "triggered": true
+    },
+    "economic_impact": {
+      "value_eur": 320000,
+      "threshold": ">EUR 100,000 direct + indirect costs",
+      "triggered": true
+    }
+  },
+  "reporting_requirements": {
+    "initial_notification": "4 hours from classification (max 24h from detection)",
+    "intermediate_report": "72 hours from initial notification",
+    "final_report": "1 month from incident resolution",
+    "cssf_form": "DORA Major ICT-related incident notification (eDesk)",
+    "client_notification": "Required without undue delay (Art. 19(3))",
+    "gdpr_notification": "Required within 72 hours to CNPD"
+  },
+  "gdpr_breach": true,
+  "third_party_involved": null
+}

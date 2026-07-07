@@ -1,0 +1,61 @@
+{
+  "incident_id": "INC-2026-007",
+  "incident_type": "phishing_compromise",
+  "entity": "P\u00e9trusse Wealth Advisors S.A.",
+  "entity_type": "Investment Firm",
+  "classification": "MINOR",
+  "criteria_triggered_count": 0,
+  "criteria_triggered": [],
+  "criteria_detail": {
+    "clients_affected": {
+      "value": 0,
+      "percentage": 0.0,
+      "threshold": ">10% of clients using impacted service",
+      "triggered": false
+    },
+    "reputational_impact": {
+      "value": false,
+      "threshold": "significant media coverage or regulatory attention",
+      "triggered": false
+    },
+    "duration": {
+      "value_hours": 0.0,
+      "threshold": ">2 hours service downtime",
+      "triggered": false
+    },
+    "geographic_spread": {
+      "countries": [
+        "LU"
+      ],
+      "count": 1,
+      "threshold": "\u22652 EU Member States",
+      "triggered": false
+    },
+    "data_losses": {
+      "type": null,
+      "records_affected": 0,
+      "threshold": "confirmed loss of confidentiality, integrity, or availability of data",
+      "triggered": false
+    },
+    "critical_function": {
+      "function": null,
+      "threshold": "disrupts a critical or important function",
+      "triggered": false
+    },
+    "economic_impact": {
+      "value_eur": 4500,
+      "threshold": ">EUR 100,000 direct + indirect costs",
+      "triggered": false
+    }
+  },
+  "reporting_requirements": {
+    "initial_notification": "Not required",
+    "intermediate_report": "N/A",
+    "final_report": "Internal log only",
+    "cssf_form": "None",
+    "client_notification": "Not required",
+    "gdpr_notification": "Not applicable"
+  },
+  "gdpr_breach": false,
+  "third_party_involved": null
+}
