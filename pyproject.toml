@@ -1,0 +1,9 @@
+[project]
+name = "dora-compliance-agent"
+version = "0.1.0"
+description = "DORA Compliance Agent"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "docling>=2.111.0",
+]
