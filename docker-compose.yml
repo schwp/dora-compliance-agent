@@ -1,0 +1,22 @@
+services:
+  chromadb:
+    image: "chromadb/chroma:latest"
+    container_name: "chroma-database"
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - chromadb_data:/chroma/chroma
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v2/healthcheck"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+volumes:
+  chromadb_data:
+    driver: local
