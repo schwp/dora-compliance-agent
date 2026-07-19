@@ -55,8 +55,6 @@ def _get_cssf_chunks(path: Path, converter: DocumentConverter) -> list[Chunk]:
         if "TABLE OF CONTENTS" in heading:
             continue
 
-        print(heading)
-
         ref = _find_circular_reference(heading, path.name)
         points = re.compile(r"^(\d{1,3})\.\s(?!\d)", re.M).findall(text)
         chapter = _find(heading, "Chapter")
