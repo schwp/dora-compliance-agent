@@ -5,13 +5,10 @@ from dataclasses import asdict
 import chromadb
 from chromadb.api.types import Documents, EmbeddingFunction, Embeddings
 from dotenv import load_dotenv
+from mistralai.client import Mistral
 from sentence_transformers import SentenceTransformer
 
 load_dotenv()
-
-LOCAL_MODEL = os.getenv("LOCAL_MODEL", None)
-MISTRAL_MODEL = os.getenv("MISTRAL_MODEL", None)
-EMBEDDING_BACKEND = os.getenv("EMBEDDING_BACKEND", None)
 
 COLLECTION_NAME = os.getenv("COLLECTION_NAME", None)
 CHROMA_HOST = os.getenv("CHROMA_HOST", None)
@@ -32,7 +29,9 @@ class EmbeddingBackend(ABC):
 
 
 class LocalBackend(EmbeddingBackend):
-    def __init__(self, model_name: str | None = LOCAL_MODEL) -> None:
+    def __init__(self) -> None:
+        model_name = os.getenv("LOCAL_MODEL", None)
+
         if model_name is None or model_name.strip() == "":
             raise ValueError(
                 "LocalBackend: model_name must be provided and set in `.env`"
@@ -61,14 +60,31 @@ class LocalBackend(EmbeddingBackend):
 
 
 class MistralBackend(EmbeddingBackend):
-    def __init__(self, model_name: str | None = MISTRAL_MODEL) -> None:
+    def __init__(self) -> None:
+        model_name = os.getenv("MISTRAL_MODEL", None)
+        api_key = os.getenv("MISTRAL_KEY", None)
+
         if model_name is None or model_name.strip() == "":
             raise ValueError(
                 "MistralBackend: model_name must be provided and set in `.env`"
             )
 
+        if api_key is None or api_key.strip() == "":
+            raise ValueError(
+                "MistralBackend: api_key must be provided and set in `.env`"
+            )
+
+        try:
+            self._client = Mistral(api_key=api_key)
+        except Exception as e:
+            raise RuntimeError(f"Failed to initialize Mistral client: {e}")
+
+        try:
+            self._model = self._client.models.retrieve(model_id=model_name)
+        except Exception as e:
+            raise RuntimeError(f"Failed to get Mistral model: {e}")
+
         self._model_name = f"mistral:{model_name}"
-        self._model = ...
 
     def embed(self, texts: list[str]) -> list[list[float]]:
         return []
@@ -89,12 +105,16 @@ def select_backend() -> EmbeddingBackend:
     Returns:
         EmbeddingBackend: The selected embedding backend.
     """
-    if EMBEDDING_BACKEND is None:
+    embedding_backend = os.getenv("EMBEDDING_BACKEND", None)
+
+    if embedding_backend is None:
         raise ValueError(
             "Unknown EMBEDDING_BACKEND: set it in `.env` by using 'local' or 'mistral'"
         )
 
-    if EMBEDDING_BACKEND == "mistral" and MISTRAL_MODEL is not None:
+    mistral_model = os.getenv("MISTRAL_MODEL", None)
+
+    if embedding_backend == "mistral" and mistral_model is not None:
         return MistralBackend()
     return LocalBackend()
 
