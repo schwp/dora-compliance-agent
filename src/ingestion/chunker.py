@@ -1,12 +1,17 @@
+import os
+import re
+import uuid
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
 from docling.document_converter import DocumentConverter
 from docling_core.transforms.chunker.hybrid_chunker import HybridChunker
+from docling_core.transforms.chunker.tokenizer.huggingface import HuggingFaceTokenizer
+from dotenv import load_dotenv
+from transformers import AutoTokenizer
 
-import uuid
-import re
+load_dotenv()
 
 
 @dataclass
@@ -22,8 +27,10 @@ class Chunk:
     citation: str
 
     def __str__(self) -> str:
-        return f"Chunk(chunk_id={self.chunk_id}, document={self.document}, " + \
-            f"chapter={self.chapter}, section={self.section}, text={self.text[:80]})"
+        return (
+            f"Chunk(chunk_id={self.chunk_id}, document={self.document}, "
+            + f"chapter={self.chapter}, section={self.section}, text={self.text[:80]})"
+        )
 
 
 def _find_circular_reference(headings: list[str], filename: str) -> str:
@@ -45,7 +52,18 @@ def _find(headings: list[str], keyword: str) -> str | None:
 
 def _get_cssf_chunks(path: Path, converter: DocumentConverter) -> list[Chunk]:
     doc = converter.convert(path).document
-    chunker = HybridChunker(merge_peers=True, max_tokens=600)
+
+    if os.getenv("EMBEDDING_BACKEND") == "local":
+        chunker = HybridChunker(
+            tokenizer=HuggingFaceTokenizer(
+                tokenizer=AutoTokenizer.from_pretrained(os.getenv("LOCAL_MODEL")),
+                max_tokens=450,
+            ),
+            merge_peers=True,
+        )
+    else:
+        chunker = HybridChunker(merge_peers=True, max_tokens=450)
+
     chunks = []
 
     for chunk in chunker.chunk(dl_doc=doc):
