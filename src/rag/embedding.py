@@ -140,7 +140,7 @@ def contextualize(chunk) -> str:
     return f"{header}\n{text}" if header else text
 
 
-class Embedder:
+class VectorStore:
     def __init__(
         self,
         collection_name: str | None = COLLECTION_NAME,
@@ -149,7 +149,7 @@ class Embedder:
     ):
         if host is None or port is None:
             raise ValueError(
-                "Embedder: ChromaDB host and port must be provided in the `.env` file"
+                "VectorStore: ChromaDB host and port must be provided in the `.env` file"
             )
 
         self.client = chromadb.HttpClient(host=host, port=int(port))
@@ -159,7 +159,7 @@ class Embedder:
 
         if collection_name is None or collection_name.strip() == "":
             raise ValueError(
-                "Embedder: collection_name must be provided in the `.env` file"
+                "VectorStore: collection_name must be provided in the `.env` file"
             )
 
         self.collection_name = collection_name
@@ -229,7 +229,31 @@ class Embedder:
             metadata={"hnsw:space": "cosine"},
         )
 
-    def query(self, question: str, top_k: int = 5) -> list[dict]: ...
+    def query(self, question: str, nb_results: int = 5) -> list[dict]:
+        res = self.collection.query(
+            query_texts=[question],
+            n_results=nb_results,
+            include=["metadatas", "distances"],
+        )
+
+        ids = res["ids"][0]
+        metadatas = res["metadatas"][0]
+        distances = res["distances"][0]
+
+        hits = []
+        for chunk_id, meta, distance in zip(ids, metadatas, distances):
+            hits.append(
+                {
+                    "chunk_id": chunk_id,
+                    "citation": meta.get("citation", ""),
+                    "text": meta.get("raw_text", ""),
+                    "chapter": meta.get("chapter", ""),
+                    "section": meta.get("section", ""),
+                    "similarity": 1.0 - distance,
+                }
+            )
+
+        return hits
 
     def stats(self) -> dict:
         """
