@@ -1,5 +1,6 @@
 from ingestion.chunker import parse_directory
 from rag.embedding import VectorStore
+from rag.generator import Generator
 from rag.retriever import HybridRetriever
 
 if __name__ == "__main__":
@@ -10,17 +11,17 @@ if __name__ == "__main__":
     store.index(chunks, reset=True)
 
     retriever = HybridRetriever(store)
+    generator = Generator()
 
     for question in [
         "When must the register of information be submitted?",
-        "point 18 submission deadline",
-        "who is the cloud officer",
-        "aggregated reporting of major incidents",
+        "Who is the cloud officer?",
+        "What are the deadlines for reporting a major ICT incident?",
     ]:
         print(f"\nQ: {question}")
-        for h in retriever.search(question, top_k=3):
-            print(
-                f"  [{h.score:.4f}] {h.citation} | {h.section or h.chapter} "
-                f"(dense={h.dense_rank or '-'}, sparse={h.sparse_rank or '-'})"
-            )
-            print(f"           {h.text[:80]!r}")
+        chunks = retriever.search(question, top_k=4)
+
+        print("A: ", end="", flush=True)
+        for piece in generator.stream(question, chunks):
+            print(piece, end="", flush=True)
+        print()
