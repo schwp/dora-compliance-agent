@@ -17,6 +17,20 @@ services:
         limits:
           memory: 2G
 
+  streamlit-app:
+    image: "compliance-app:latest"
+    container_name: "streamlit-app"
+    platform: linux/amd64
+    ports:
+      - "7860:7860"
+    environment:
+      - CHROMA_MODE=network
+      - CHROMA_HOST=chroma-database
+      - CHROMA_PORT=8000
+      - MISTRAL_KEY=${MISTRAL_KEY}
+    depends_on:
+      - chromadb
+
 volumes:
   chromadb_data:
     driver: local
