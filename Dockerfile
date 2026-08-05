@@ -26,7 +26,7 @@ ENV CHROMA_MODE=persistent \
     AGENT_MODEL=mistral-large-latest
 
 EXPOSE 7860
-CMD ["streamlit", "run", "src/app.py", \
+CMD ["streamlit", "run", "src/ui/streamlit_app.py", \
      "--server.port=7860", \
      "--server.address=0.0.0.0", \
      "--server.headless=true", \
