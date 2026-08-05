@@ -9,7 +9,7 @@ retriever = HybridRetriever(store)
 generator = Generator()
 
 
-def respond(message: str, history: list)
+def respond(message: str, history: list):
     chunks = retriever.search(message, top_k=4)
 
     if not chunks:

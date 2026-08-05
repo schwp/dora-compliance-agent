@@ -1,8 +1,8 @@
 import streamlit as st
 
-from rag.embedding import VectorStore
-from rag.generator import Generator
-from rag.retriever import HybridRetriever
+from src.rag.embedding import VectorStore
+from src.rag.generator import Generator
+from src.rag.retriever import HybridRetriever
 
 st.set_page_config(
     page_title="CSSF/DORA Compliance Assistant",
