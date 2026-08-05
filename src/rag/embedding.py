@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from dataclasses import asdict
 
 import chromadb
+from chromadb import ClientAPI
 from chromadb.api.types import Documents, EmbeddingFunction, Embeddings
 from dotenv import load_dotenv
 from mistralai.client import Mistral
@@ -11,8 +12,6 @@ from sentence_transformers import SentenceTransformer
 load_dotenv()
 
 COLLECTION_NAME = os.getenv("COLLECTION_NAME", None)
-CHROMA_HOST = os.getenv("CHROMA_HOST", None)
-CHROMA_PORT = os.getenv("CHROMA_PORT", None)
 
 
 class EmbeddingBackend(ABC):
@@ -37,14 +36,8 @@ class LocalBackend(EmbeddingBackend):
                 "LocalBackend: model_name must be provided and set in `.env`"
             )
 
-        if os.getenv("HF_TOKEN") is None:
-            raise ValueError(
-                "LocalBackend: The local backend runs on Hugging Face models, so "
-                "HF_TOKEN must be set in `.env` or in your environment"
-            )
-
         self._model_name = f"local:{model_name}"
-        self._model = SentenceTransformer(model_name)
+        self._model = SentenceTransformer(model_name, token=os.getenv("HF_TOKEN", None))
 
     def embed(self, texts: list[str]) -> list[list[float]]:
         vectors = self._model.encode(texts)
@@ -140,20 +133,25 @@ def contextualize(chunk) -> str:
     return f"{header}\n{text}" if header else text
 
 
+def select_client() -> chromadb.ClientAPI:
+    mode = os.getenv("CHROMA_MODE", "network")
+    if mode == "persistent":
+        return chromadb.PersistentClient(path=os.getenv("CHROMA_PATH", "data/vectordb"))
+
+    host = os.getenv("CHROMA_HOST", None)
+    port = os.getenv("CHROMA_PORT", None)
+
+    if host is None or port is None:
+        raise ValueError(
+            "VectorStore: ChromaDB host and port must be provided in the `.env` file"
+        )
+
+    return chromadb.HttpClient(host=host, port=int(port))
+
+
 class VectorStore:
-    def __init__(
-        self,
-        collection_name: str | None = COLLECTION_NAME,
-        host: str | None = CHROMA_HOST,
-        port: str | None = CHROMA_PORT,
-    ):
-        if host is None or port is None:
-            raise ValueError(
-                "VectorStore: ChromaDB host and port must be provided in the `.env` file"
-            )
-
-        self.client = chromadb.HttpClient(host=host, port=int(port))
-
+    def __init__(self, collection_name: str | None = COLLECTION_NAME):
+        self.client = select_client()
         self.backend = select_backend()
         self._embed_fn = _ChromaEmbeddingFunction(self.backend)
 
